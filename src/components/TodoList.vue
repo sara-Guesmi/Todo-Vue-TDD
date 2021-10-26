@@ -1,8 +1,15 @@
-<template></template>
+<template>
+  <h2>{{ title }}</h2>
+</template>
 
 <script>
 export default {
-  name: "Todo",
+  name: "TodoList",
+  props: {
+    title: {
+      type: String,
+    },
+  },
 };
 </script>
 
