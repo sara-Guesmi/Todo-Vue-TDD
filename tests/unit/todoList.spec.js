@@ -3,16 +3,21 @@ import { shallowMount } from "@vue/test-utils";
 import TodoList from "@/components/TodoList";
 
 describe("The TodoList.vue component", () => {
-  it("Can be mounted", () => {
-    const wrapper = shallowMount(TodoList);
-    expect(wrapper.exists()).toBeTruthy();
-  });
-  it("display a title passed as a props", () => {
-    const wrapper2 = shallowMount(TodoList, {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallowMount(TodoList, {
       propsData: {
-        title: "random title",
+        title: "random Test",
+        todos: [],
       },
     });
-    expect(wrapper2.text()).toMatch("random title");
+  });
+
+  it("Can be mounted", () => {
+    expect(wrapper.exists()).toBeTruthy();
+  });
+
+  it("display a title passed as a props", () => {
+    expect(wrapper.find("#title").text()).toMatch("random Test");
   });
 });
